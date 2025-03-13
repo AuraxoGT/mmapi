@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const fetch = require("node-fetch");
@@ -6,9 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const DISCORD_BOT_TOKEN = procces.env.TOKEN; // Keep this secret
+const DISCORD_BOT_TOKEN = process.env.TOKEN; // Corrected typo
 const GUILD_ID = "1325850250027597845";
 const TARGET_ROLE_NAME = "Laukiantis Atsakymo";
+const COOKIE_API_KEY = process.env.COOKIE_API_KEY; // Add this to your .env file
 
 app.post("/api/check-role", async (req, res) => {
     const { userId } = req.body;
@@ -19,7 +21,7 @@ app.post("/api/check-role", async (req, res) => {
         const response = await fetch("https://api.cookie-api.com/api/discord/user-info", {
             method: "POST",
             headers: {
-                "Authorization": "zD8pHkUXky7Usd7NTyVEZkEgk835pl7P2gmg5nXN",
+                "Authorization": COOKIE_API_KEY,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
