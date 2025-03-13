@@ -9,7 +9,7 @@ app.use(express.json());
 
 const DISCORD_BOT_TOKEN = process.env.TOKEN; // Your bot token from .env
 const GUILD_ID = "1325850250027597845"; // Your Discord Guild ID
-const TARGET_ROLE_NAME = "Laukiantis Atsakymo"; // Role you are checking for
+const TARGET_ROLE_ID = "1332046743675600928"; // Role ID for "Laukiantis Atsakymo"
 
 app.post("/api/check-role", async (req, res) => {
     const { userId } = req.body;
@@ -35,8 +35,8 @@ app.post("/api/check-role", async (req, res) => {
         // Parse the response data
         const userData = await response.json();
 
-        // Check if the user has the target role
-        const hasRole = userData.roles.includes(TARGET_ROLE_NAME);
+        // Check if the user has the target role by ID
+        const hasRole = userData.roles.includes(TARGET_ROLE_ID);
 
         // Send the result back to the client
         res.json({ hasRole });
