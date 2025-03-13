@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 const DISCORD_BOT_TOKEN = procces.env.TOKEN; // Keep this secret
-const GUILD_ID = "YOUR_GUILD_ID";
+const GUILD_ID = "1325850250027597845";
 const TARGET_ROLE_NAME = "Laukiantis Atsakymo";
 
 app.post("/api/check-role", async (req, res) => {
@@ -19,7 +19,7 @@ app.post("/api/check-role", async (req, res) => {
         const response = await fetch("https://api.cookie-api.com/api/discord/user-info", {
             method: "POST",
             headers: {
-                "Authorization": "YOUR_COOKIE_API_KEY",
+                "Authorization": "zD8pHkUXky7Usd7NTyVEZkEgk835pl7P2gmg5nXN",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
