@@ -44,6 +44,13 @@ app.post("/api/check-role", async (req, res) => {
     } catch (error) {
         console.error("Error checking role:", error);
         res.status(500).json({ error: `Internal server error: ${error.message}` });
+console.log('Rate Limit Headers:', {
+  'Retry-After': error.response?.headers?.get('Retry-After'),
+  'X-RateLimit-Limit': error.response?.headers?.get('X-RateLimit-Limit'),
+  'X-RateLimit-Remaining': error.response?.headers?.get('X-RateLimit-Remaining'),
+  'X-RateLimit-Reset': error.response?.headers?.get('X-RateLimit-Reset'),
+  'X-RateLimit-Bucket': error.response?.headers?.get('X-RateLimit-Bucket')
+});
     }
 });
 
